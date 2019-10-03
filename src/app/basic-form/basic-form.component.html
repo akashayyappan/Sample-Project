@@ -1,0 +1,61 @@
+<p-scrollPanel [style]="formHeight" styleClass="custom">
+    <form class="form-padding">
+
+        <div class="flexbox">
+            <div class="form-inline">
+                <label class="form-label">Sample 1</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 2</label>
+                <textarea rows="5" class="form-control"></textarea>
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 3</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 4</label>
+                <input type="text" class="form-control">
+                <label class="form-label">Sample 5</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-inline">
+                <label class="form-label">Select City</label>
+                <ng-multiselect-dropdown [placeholder]="'Select City'" [data]="dropdownList"
+                    [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="form-inline">
+                <label class="form-label">Sample 6</label>
+                <input type="text" class="form-control form-half">
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 7</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 8</label>
+                <textarea rows="5" class="form-control"></textarea>
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 9</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="form-inline">
+                <label class="form-label">Sample 10</label>
+                <input type="text" class="form-control">
+                <label class="form-label">Sample 11</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+    </form>
+</p-scrollPanel>
