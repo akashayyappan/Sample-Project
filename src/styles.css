@@ -65,6 +65,12 @@ ng-multiselect-dropdown{
     margin: 5px;
 }
 
+label[required="required"]::after{
+    content: "*";
+    color: red;
+    font-size: 0.8rem;
+}
+
 @media screen and (min-width: 800px){
 
     .mat-horizontal-stepper-header-container{

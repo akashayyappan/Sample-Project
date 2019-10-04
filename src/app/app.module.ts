@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -39,7 +40,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSlideToggleModule
   ],
   providers: [FormBuilder],
   bootstrap: [AppComponent]

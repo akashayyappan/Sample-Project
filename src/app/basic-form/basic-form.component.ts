@@ -14,17 +14,24 @@ export class BasicFormComponent implements OnInit {
   public formHeight:any;
   dropdownList: { item_id: number; item_text: string; }[];
   dropdownSettings:IDropdownSettings;
+  selectedItems:any;
 
   constructor(
     private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-
+    
     this.myForm = this.fb.group({
-      "sample1": ["",[Validators.required]]
+      "sample1": ["",[Validators.required]],
+      "sample2": ["",[Validators.required]],
+      "sample3": ["",[Validators.required]],
+      "sample4": [false,[Validators.required]],
+      "sample5": [,[Validators.required]],
+      "slide1": true,
+      "slide2": false,
     })
-
+    
     this.dropdownList = [
       { item_id: 1, item_text: 'Chennai' },
       { item_id: 2, item_text: 'Bangaluru' },
@@ -51,6 +58,15 @@ export class BasicFormComponent implements OnInit {
     if(mq.matches){
       this.formHeight = {'width':'100%','height':height - 40 +'px'};
     }
+  }
+
+  slideToggle(val){
+    val.checked = false
+    let infomsg = document.getElementsByClassName("infomsg")[0] as HTMLElement;
+    infomsg.style.display = "block";
+    setTimeout(() => {
+      infomsg.style.display = "none";
+    },1500)
   }
 
 }
