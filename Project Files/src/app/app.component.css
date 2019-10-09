@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+}
+
+.box{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    font-size: 1rem;
+}
+
+nav{
+    flex: 0 1 auto;
+    min-height: 70px;
+    background: linear-gradient(0deg,#083B75,#144178,#3e82c6)
+}
+
+.header{
+    flex: 0 1 auto;
+    min-height: 50px;
+    background-color: #109DCB;
+}
+
+.header .content{
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.right{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.icon-s{
+    transform: scale(0.75);
+}
+
+input{
+    border: none;
+    background: transparent;
+}
+
+.search-bar{
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.padding-button{
+    padding: 0px 20px;
+}
+
+.body{
+    color: white;
+    flex: 1 1 auto;
+    padding: 10px 40px;
+    background-color: #1E2124;
+}
+
+.button-outline{
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.form-body{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    background-color: #30353B;
+}
+
+.form-header{
+    flex: 0 1 auto;
+    margin: auto 0;
+    font-size: 1.3rem;
+    padding: 20px;
+    color: white;
+    background-color: #24292D;
+}
+
+.form-content{
+    flex: 1 1 auto;
+}
+
+.form-footer{
+    flex: 0 1 auto;
+    color: white;
+    background-color: #24292D;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    width: 100%;
+    display: none;
+    position: absolute;
+    z-index: 100;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.h-list-heading{
+    margin: 2px;
+    padding: 8px;
+    background: #cacaca;
+}
+
+.h-list-item{
+    margin: 2px;
+    padding: 10px;
+    border: none;
+    background-color: white;
+}
+
+.h-list{
+    list-style: none;
+}
+
+.h-list-span{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 15px;
+    height: 50px;
+    transform: translate(-10px,-24px);
+    border-left: 1px solid #797979;
+    border-bottom: 1px solid #797979;
+}
+
+.h-list-span-first{
+    height: 20px;
+    transform: translate(-10px,6px);
+}
+
+.h-list-item:hover{
+    background-color: #cacaca;
+}
+
+@media screen and (max-width: 658px){
+
+    .header{
+        display: none;
+    }
+
+    .body{
+        padding: 5px 10px;
+    }
+
+    button{
+        transform: scale(0.9);
+    }
+
+    .padding-button{
+        padding: 0 5px;
+    }
+
+}

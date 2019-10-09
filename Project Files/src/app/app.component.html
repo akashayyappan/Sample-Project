@@ -1,0 +1,100 @@
+<div class="box">
+
+  <nav class="row navbar">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand text-white">Sample Design</a>
+    </div>
+  </nav>
+
+  <section class="row header">
+    <div class="content">
+      <img class="pointer" src="assets/round_dehaze_white_18dp.png" alt="ham">
+
+      <div class="dropdown">
+        <button mat-button id="cretedropdown" class="text-white">
+          <img class="icon-s" src="assets/round_control_point_white_18dp.png" alt="create">&nbsp;Create
+          <img src="assets/round_arrow_drop_down_white_18dp.png" alt="down_arrow">
+        </button>
+
+        <div class="dropdown-content">
+          <h5 class="h-list-heading">Lists</h5>
+          <ul class="h-list">
+            <li><span class="h-list-span h-list-span-first">&nbsp;</span><button class="h-list-item">Link - 1</button></li>
+            <li><span class="h-list-span">&nbsp;</span><button class="h-list-item">Link - 2</button></li>
+            <li><span class="h-list-span">&nbsp;</span><button class="h-list-item">Link - 3</button></li>
+          </ul>
+          <h5 class="h-list-heading">Lists</h5>
+          <ul class="h-list">
+            <li><span class="h-list-span h-list-span-first">&nbsp;</span><button class="h-list-item">Link - 1</button></li>
+            <li><span class="h-list-span">&nbsp;</span><button class="h-list-item">Link - 2</button></li>
+            <li><span class="h-list-span">&nbsp;</span><button class="h-list-item">Link - 3</button></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="content right">
+
+      <span class="search-bar">
+        <input type="text" name="search" id="search" placeholder="SEARCH">
+        <img class="icon-s pointer" src="assets/round_search_white_18dp.png" alt="search">
+      </span>
+
+      <button mat-button [matMenuTriggerFor]="menu" class="text-white">&nbsp;John_Kira
+        <img src="assets/round_arrow_drop_down_white_18dp.png" alt="down_arrow">
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+      <img class="pointer" src="assets/round_notifications_white_18dp.png" alt="notification"><span
+        class="badge badge-danger">1</span>
+    </div>
+  </section>
+
+  <section class="row body">
+
+    <div class="form-body">
+
+      <div class="form-header">
+        <span>Create New Form</span>
+        <button mat-button class="button-outline" style="float: right">Save as Draft</button>
+      </div>
+
+      <div class="form-content">
+
+        <mat-horizontal-stepper #stepper labelPosition="bottom">
+          <mat-step label="Basics">
+            <div>
+              <app-basic-form></app-basic-form>
+            </div>
+          </mat-step>
+          <mat-step label="Details 1">
+            <p>Details 2</p>
+          </mat-step>
+          <mat-step label="Details 2">
+            <p>You're welcome.</p>
+          </mat-step>
+
+          <!-- Icon overrides. -->
+          <!-- <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+          </ng-template>
+          <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+          </ng-template> -->
+        </mat-horizontal-stepper>
+
+      </div>
+
+      <div class="form-footer">
+        <div class="text-right">
+          <button mat-button (click)="stepper.previous()" class="m-2 padding-button button-outline">Back</button>
+          <button mat-raised-button color="primary" (click)="stepper.next()" class="m-2 padding-button">Next</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>
