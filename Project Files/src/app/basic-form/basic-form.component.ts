@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ENTER, COMMA } from '@angular/cdk/keycodes'
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-basic-form',
@@ -16,15 +18,25 @@ export class BasicFormComponent implements OnInit {
   dropdownSettings:IDropdownSettings;
   selectedItems:any;
 
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  selectedApps:any = [];
+
+  applications:any;
+
+  
   constructor(
     private fb: FormBuilder
-  ) { }
-
-  ngOnInit() {
+    ) { }
     
-    this.myForm = this.fb.group({
-      "sample1": ["",[Validators.required]],
-      "sample2": ["",[Validators.required]],
+    ngOnInit() {
+      
+      this.myForm = this.fb.group({
+        "sample1": ["",[Validators.required]],
+        "sample2": ["",[Validators.required]],
       "sample3": ["",[Validators.required]],
       "sample4": [false,[Validators.required]],
       "sample5": [,[Validators.required]],
@@ -58,6 +70,51 @@ export class BasicFormComponent implements OnInit {
     if(mq.matches){
       this.formHeight = {'width':'100%','height':height - 40 +'px'};
     }
+
+    this.applications = [
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+      {
+        id: 1000,
+        app: "sample",
+        bo: "sample",
+        acc: "SA"
+      },
+    ]
   }
 
   slideToggle(val){
@@ -69,4 +126,50 @@ export class BasicFormComponent implements OnInit {
     },1500)
   }
 
+  openPopUp(){
+    let element = document.getElementsByClassName("popup-container")[0] as HTMLElement;
+    element.style.display = "block";
+  }
+  
+  closePopUp(){
+    let element = document.getElementsByClassName("popup-container")[0] as HTMLElement;
+    element.style.display = "none";
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+  
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.selectedApps.push({name: value.trim()});
+    }
+  
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+  
+  remove(item: any): void {
+    const index = this.selectedApps.indexOf(item);
+  
+    if (index >= 0) {
+      this.selectedApps.splice(index, 1);
+    }
+  }
+
+  addApp(app){
+    this.selectedApps.push(app);
+  }
+
+  removeApp(app){
+    this.selectedApps = this.selectedApps.filter(_ => {
+      if(_ == app){
+        return false;
+      }else{
+        return true;
+      }
+    })
+  }
 }

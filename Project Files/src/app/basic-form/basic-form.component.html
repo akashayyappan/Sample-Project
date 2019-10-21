@@ -14,10 +14,80 @@
 
             <div class="form-inline">
                 <label class="form-label" required="required">Sample 2</label>
-                <textarea rows="5" class="form-control" formControlName="sample2"
-                    [class.input-error]="myForm.controls.sample2.touched && !myForm.controls.sample2.value"></textarea>
-                <img class="error-img" src="assets/icons8-high-importance-30.png" alt="exclamation"
-                    [hidden]="!(myForm.controls.sample2.touched && !myForm.controls.sample2.value)">
+                <mat-form-field class="example-chip-list">
+                    <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip *ngFor="let item of selectedApps" [selectable]="selectable" [removable]="removable"
+                            (removed)="remove(item)">
+                            {{item.id}} - {{item.app}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input [matChipInputFor]="chipList" formControlName="sample2" (click)="openPopUp()"
+                            (focus)="openPopUp()" autocomplete="off"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                </mat-form-field>
+                <div class="popup-container">
+                    <div class="popup-content">
+                        <div class="popup-header">
+                            <span>Add items</span>
+                            <button style="float: right" class="btn text-white" (click)="closePopUp()">X</button>
+                        </div>
+                        <div class="popup-body">
+                            <div class="form-inline">
+                                <select class="popup-select">
+                                    <option value="item1">Item 1</option>
+                                    <option value="item2">Item 2</option>
+                                    <option value="item3">Item 3</option>
+                                </select>
+                                <input type="text" class="popup-input" placeholder="Search">
+                                <button class="btn btn-primary popup-btn">SEARCH</button>
+                            </div> <br>
+                            <div class="row">
+                                <div class="col-6">
+                                    Search Results <br>
+                                    <table class="table table-borderless text-white">
+                                        <tr>
+                                            <th>App Id</th>
+                                            <th>Application</th>
+                                            <th>Business Owner</th>
+                                            <th>Accronym</th>
+                                        </tr>
+                                        <tr *ngFor="let app of applications">
+                                            <td>{{ app.id }}</td>
+                                            <td>{{ app.app }}</td>
+                                            <td>{{ app.bo }}</td>
+                                            <td>{{ app.acc }}</td>
+                                            <td><button class="btn btn-success" (click)="addApp(app)">+</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-6">
+                                    Application Selected <br>
+                                    <table class="table table-borderless text-white">
+                                        <tr>
+                                            <th>App Id</th>
+                                            <th>Application</th>
+                                            <th>Business Owner</th>
+                                            <th>Accronym</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr *ngFor="let app of selectedApps">
+                                            <td>{{ app.id }}</td>
+                                            <td>{{ app.app }}</td>
+                                            <td>{{ app.bo }}</td>
+                                            <td>{{ app.acc }}</td>
+                                            <td><button class="btn btn-danger" (click)="removeApp(app)">x</button></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup-footer">
+                            <button class="btn btn-primary" style="float: right" (click)="closePopUp()">SAVE</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="form-inline">
@@ -29,8 +99,10 @@
             </div>
 
             <div class="form-inline">
-                <mat-slide-toggle formControlName="slide1" #s1 (change)="slideToggle(s2)" class="input-flex" style="margin-right: 70px">Option 1</mat-slide-toggle>
-                <mat-slide-toggle formControlName="slide2" #s2 (change)="slideToggle(s1)" class="input-flex" style="margin-right: 20px">Option 2</mat-slide-toggle>
+                <mat-slide-toggle formControlName="slide1" #s1 (change)="slideToggle(s2)" class="input-flex"
+                    style="margin-right: 70px">Option 1</mat-slide-toggle>
+                <mat-slide-toggle formControlName="slide2" #s2 (change)="slideToggle(s1)" class="input-flex"
+                    style="margin-right: 20px">Option 2</mat-slide-toggle>
                 <img src="assets/icons8-info-50.png" alt="info" id="infotoggle">
                 <p class="infomsg">Either select Option 1 or Option 2</p>
                 <label class="form-label" required="required">Date</label>
